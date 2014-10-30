@@ -12,7 +12,7 @@ CSV.open("./data/tweets.csv", "ab") do |csv|
   csv << ["tweet", "favorites", "retweets", "user", "date", "hour"]
 end
 
-client.search("#hackathonbi", :result_type => "all").each do |tweet|
+client.search("#hackathonbi", :result_type => "recent").each do |tweet|
 	CSV.open("./data/tweets.csv", "ab") do |csv|
 		csv << [tweet.text, tweet.favorite_count, tweet.retweet_count, tweet.user.screen_name, tweet.created_at.day.to_s+"/"+tweet.created_at.month.to_s+"/"+tweet.created_at.year.to_s, tweet.created_at.hour.to_s]
 	end
